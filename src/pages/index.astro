@@ -7,31 +7,28 @@ import Heading from "../components/Heading.astro";
 ---
 
 <MainLayout title="">
-  <section class="min-h-screen grid place-items-center">
-    <video
-      autoplay
-      loop
-      muted
-      playsinline
-      class="h-auto"
-    >
+  <div class="min-h-screen grid place-items-center">
+    <video autoplay loop muted playsinline class="h-auto">
       <source src="/cloudanimation1.webm" type="video/webm" />
     </video>
-  </section>
+  </div>
 
-  <section class="aboutgrid grid grid-cols-12 gap-4">
-    <div class="border-3 border-[var(--color-primary)] rounded-xl col-span-7 p-2">
-      <Heading
-        size="h2"
-        font="header"
-        stylingclasses="text-[var(--color-primary)]"
+  <!-- About -->
+  <section class="aboutgrid grid grid-cols-1 lg:grid-cols-12 gap-4 m-8 lg:m-20">
+    <!-- About card -->
+    <div class="relative border-3 border-[var(--color-primary)] rounded-xl col-span-1 lg:col-span-7 p-6 lg:p-4">
+      <!-- Butterfly #2 (flutters on hover, no glow) -->
+      <div
+        class="butterfly-flutter absolute cursor-pointer select-none
+               top-[410px] left-[400px] w-26"
+        style="--rot:-6deg"
       >
-        About
-      </Heading>
-      <Text
-        teksttype="paragraph"
-        stylingclasses="text-[var(--color-primary)]"
-      >
+        <img src="/butterfly2.svg" alt="" aria-hidden="true"
+             class="butterfly-img block w-full" />
+      </div>
+
+      <Heading htmlheading="h2" font="header" stylingclasses="text-[var(--color-primary)]">About</Heading>
+      <Text teksttype="paragraph" stylingclasses="text-[var(--color-primary)]">
         Jeg er multimediedesignstuderende på 3. semester med fokus på digital
         design, især UX/UI og grafisk design. Jeg brænder for at skabe kreative
         løsninger, der taler til målgruppen. I min praktik ønsker jeg at opnå
@@ -40,69 +37,61 @@ import Heading from "../components/Heading.astro";
       </Text>
     </div>
 
-    <div class="border-3 border-[var(--color-primary)] rounded-xl col-span-4 col-start-9">
-      <img src="" alt="" />
+    <!-- Image card -->
+    <div class="relative border-3 border-[var(--color-primary)] rounded-xl col-span-1 lg:col-span-4 lg:col-start-9">
+      <!-- Butterfly #1 (flies around on hover) -->
+      <div
+        class="butterfly-fly absolute cursor-pointer select-none
+               top-[-20px] right-[-20px] w-24"
+        style="--rot:6deg"
+      >
+        <img src="/butterfly1.svg" alt="" aria-hidden="true"
+             class="butterfly-img block w-full" />
+      </div>
+
+      <img src="/Kiana.png" alt="Picture of Kiana" class="rounded-xl w-full h-full object-cover" />
     </div>
   </section>
 
-  <section class="skillsgrid grid grid-cols-12 grid-rows-2 gap-4">
-    <!-- Left, top (cols 1–7, row 1) -->
-    <div class="col-span-7 row-span-1 border-3 border-[var(--color-primary)] rounded-xl p-2">
-		<Heading
-        htmlheading="h3"
-        font="header"
-        stylingclasses="text-[var(--color-primary)]"
-      >
-        Languages
-      </Heading>
-	  <div class="space-x-4 space-y-4">
-		<Pill label="English - Native" />
-		<Pill label="Danish - Fluent" />
-		<Pill label="German - Understand" />
-	  </div>
+  <!-- Skills grid -->
+  <section class="skillsgrid grid grid-cols-1 lg:grid-cols-12 lg:grid-rows-2 gap-4 m-8 lg:m-20">
+    <!-- Left, top -->
+    <div class="col-span-1 lg:col-span-7 lg:row-span-1 border-3 border-[var(--color-primary)] rounded-xl p-6 lg:p-4">
+      <Heading htmlheading="h3" font="header" stylingclasses="text-[var(--color-primary)]">Languages</Heading>
+      <div class="space-x-4 space-y-4">
+        <Pill label="English - Native" />
+        <Pill label="Danish - Fluent" />
+        <Pill label="German - Understand" />
+      </div>
     </div>
 
-    <!-- Left, bottom (cols 1–7, row 2) -->
-    <div class="col-span-7 row-start-2 border-3 border-[var(--color-primary)] rounded-xl p-2">
-		<Heading
-        htmlheading="h3"
-        font="header"
-        stylingclasses="text-[var(--color-primary)]"
-      >
-        Education
-      </Heading>
-	  <div class="space-x-4 space-y-4">
-		<Pill label="2024 - Current" />
-	  </div>
-	  <Text
-	  teksttype="paragraph"
-	  stylingclasses="text-[var(--color-primary)]"
-	>
-	  Multimediedesigner, EK - Københavns Erhvervsakademi
+    <!-- Left, bottom -->
+    <div class="col-span-1 lg:col-span-7 lg:row-start-2 border-3 border-[var(--color-primary)] rounded-xl p-6 lg:p-4">
+      <Heading htmlheading="h3" font="header" stylingclasses="text-[var(--color-primary)]">Education</Heading>
+      <div class="space-x-4 space-y-4">
+        <Pill label="2024 - Current" />
+      </div>
+      <Text teksttype="paragraph" stylingclasses="text-[var(--color-primary)]">
+        Multimediedesigner, EK - Københavns Erhvervsakademi
+      </Text>
     </div>
 
-    <!-- Right, tall (skip col 8; start at col 9, span 4 cols & both rows) -->
-    <div class="col-span-4 col-start-9 row-span-2 border-3 border-[var(--color-primary)] rounded-xl p-2">
-		<Heading
-        htmlheading="h3"
-        font="header"
-        stylingclasses="text-[var(--color-primary)]"
-      >
-        Skills
-      </Heading>
-	  <div class="space-x-4 space-y-4">
-		<Pill label="Photoshop" />
-		<Pill label="Premiere Pro" />
-		<Pill label="After Effects" />
-		<Pill label="Illustrator" />
-		<Pill label="Figma" />
-		<Pill label="Light Room" />
-		<Pill label="UX/UI" />
-		<Pill label="Tailwind" />
-		<Pill label="Astro" />
-		<Pill label="HTML/CSS" />
-		<Pill label="Alpine.js" />
-	  </div>
+    <!-- Right, tall -->
+    <div class="col-span-1 lg:col-span-4 lg:col-start-9 lg:row-span-2 border-3 border-[var(--color-primary)] rounded-xl p-6 lg:p-4">
+      <Heading htmlheading="h3" font="header" stylingclasses="text-[var(--color-primary)]">Skills</Heading>
+      <div class="space-x-4 space-y-4">
+        <Pill label="Photoshop" />
+        <Pill label="Premiere Pro" />
+        <Pill label="After Effects" />
+        <Pill label="Illustrator" />
+        <Pill label="Figma" />
+        <Pill label="Light Room" />
+        <Pill label="UX/UI" />
+        <Pill label="Tailwind" />
+        <Pill label="Astro" />
+        <Pill label="HTML/CSS" />
+        <Pill label="Alpine.js" />
+      </div>
     </div>
   </section>
 
@@ -110,7 +99,45 @@ import Heading from "../components/Heading.astro";
 </MainLayout>
 
 <script>
-  // Her kan du skrive JavaScript, der skal køre på siden
-  // Du kan også bruge Alpine.js eller Motion One til at lave interaktive elementer
-  /* Stagger animation */
+  // Optional animations or interactivity
 </script>
+
+<style>
+/* Butterfly #1 — fly around path */
+@keyframes flyAround {
+  0%   { transform: translate(0,0) rotate(var(--rot,0)); }
+  20%  { transform: translate(40px,-40px) rotate(calc(var(--rot,0) + 20deg)); }
+  40%  { transform: translate(80px,-10px) rotate(calc(var(--rot,0) - 10deg)); }
+  60%  { transform: translate(-20px,-50px) rotate(calc(var(--rot,0) + 15deg)); }
+  80%  { transform: translate(-40px,-20px) rotate(calc(var(--rot,0) - 10deg)); }
+  100% { transform: translate(0,0) rotate(var(--rot,0)); }
+}
+
+.butterfly-fly .butterfly-img {
+  transition: transform 0.3s ease;
+}
+.butterfly-fly:hover .butterfly-img {
+  animation: flyAround 2.5s ease-in-out forwards;
+}
+
+/* Butterfly #2 — flutter hover (no glow) */
+@keyframes flutter {
+  0%   { transform: translateY(0) rotate(calc(var(--rot,0) - 3deg)) scale(1); }
+  25%  { transform: translateY(-2px) rotate(calc(var(--rot,0) + 6deg)) scale(1.03); }
+  50%  { transform: translateY(0) rotate(calc(var(--rot,0) - 2deg)) scale(1.01); }
+  75%  { transform: translateY(-1px) rotate(calc(var(--rot,0) + 4deg)) scale(1.03); }
+  100% { transform: translateY(0) rotate(calc(var(--rot,0))) scale(1.0); }
+}
+
+.butterfly-flutter .butterfly-img {
+  transition: transform 0.3s ease;
+}
+.butterfly-flutter:hover .butterfly-img {
+  animation: flutter 500ms ease-in-out infinite;
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .butterfly-img { animation: none !important; }
+}
+</style>

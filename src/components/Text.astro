@@ -4,7 +4,7 @@ const { teksttype="paragraph", stylingclasses=""} = Astro.props;
  
 //Definer den styling (Tailwind classes), der gør sig gældende for de forskellige størrelser.
 const sizeClasses = {
-"paragraph": "text-[14px] md:text-[24px] my-4",
+"paragraph": "text-[20px] md:text-[24px] my-4",
 };
 ---
 <p class:list={[sizeClasses[teksttype], stylingclasses]}><slot /></p>

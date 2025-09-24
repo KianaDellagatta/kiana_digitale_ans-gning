@@ -38,3 +38,11 @@
 }
 @layer utilities {
 }
+
+section {
+  max-width: 1200px; /* or whatever you want */
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem; /* optional for breathing room */
+  padding-right: 1rem; /* optional for breathing room */
+}
