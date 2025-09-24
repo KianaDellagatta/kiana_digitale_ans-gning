@@ -1,0 +1,24 @@
+---
+const {
+  htmlheading = "h2",
+  font = "Kalnia",
+  stylingclasses = "",
+} = Astro.props;
+const Htmlheading = htmlheading;
+
+const sizeClasses = {
+  h1: "text-[45px] md:text-[96px] font-semibold",
+  h2: "text-[37px] md:text-[80px] font-semibold",
+  h3: "text-[24px] md:text-[44px] font-semibold",
+};
+
+const fontClasses = {
+  header: "font-display",
+};
+---
+
+<Htmlheading
+  class:list={[stylingclasses, sizeClasses[htmlheading], fontClasses[font]]}
+>
+  <slot />
+</Htmlheading>
