@@ -14,7 +14,7 @@ import Heading from "../components/Heading.astro";
   </div>
 
   <!-- About -->
-  <section class=" grid grid-cols-1 lg:grid-cols-12 gap-4 m-8 lg:m-20">
+  <section class=" grid grid-cols-1 lg:grid-cols-12 gap-4 m-8 lg:m-20 ">
     <!-- About card -->
     <div class="relative border-3 border-[var(--color-primary)] rounded-xl col-span-1 lg:col-span-7 p-6 lg:p-4">
       <!-- Butterfly #2 (flutters on hover, no glow) -->
@@ -27,10 +27,10 @@ import Heading from "../components/Heading.astro";
 
       <Heading htmlheading="h2" font="header" stylingclasses="text-[var(--color-primary)]">About</Heading>
       <Text teksttype="paragraph" stylingclasses="text-[var(--color-primary)]">
-        Jeg er multimediedesignstuderende på 3. semester med fokus på digital design, især UX/UI og grafisk design.
-        Jeg brænder for at skabe kreative løsninger, der taler til målgruppen. I min praktik ønsker jeg at opnå indsigt
-        i professionelle designprocesser og teamwork. Som kollega er jeg samarbejdsorienteret, kommunikativ og bidrager
-        med kreativitet.
+		I am a Multimedia Design student in my 3rd semester, focusing on digital design, especially UX/UI and graphic design.
+		I am passionate about creating creative solutions that speak to the target audience.
+		During my internship, I want to gain insight into professional design processes and teamwork.
+		As a colleague, I am collaborative, communicative, and contribute with creativity.
       </Text>
     </div>
 
@@ -56,7 +56,7 @@ import Heading from "../components/Heading.astro";
         src="/flower.svg"
         alt=""
         aria-hidden="true"
-        class="hidden lg:block absolute -top-6 -left-6 w-14 z-20 select-none flower-anim"
+        class="hidden lg:block absolute -top-6 -left-6 w-14 z-20 select-none flower-anim parallax"
       />
       <Heading htmlheading="h3" font="header" stylingclasses="text-[var(--color-primary)]">Languages</Heading>
       <div class="space-x-4 space-y-4">
@@ -115,7 +115,7 @@ import Heading from "../components/Heading.astro";
 	<Heading
 	  htmlheading="h2"
 	  font="header"
-	  stylingclasses="text-[var(--color-primary)] underline"
+	  stylingclasses="text-[var(--color-primary)]"
 	>
 	  Past Projects
 	</Heading>
@@ -126,13 +126,13 @@ import Heading from "../components/Heading.astro";
 	  <img
 		src="/flower2.svg"
 		alt=""
-		class="hidden lg:block absolute -top-6 -right-6 w-14 flower-anim"
+		class="hidden lg:block absolute -top-6 -right-6 w-20 flower-anim"
 		aria-hidden="true"
 	  />
   
 	  <!-- Butterfly4 (left side) -->
 	  <div
-		class="hidden lg:block absolute top-1/2 -left-10 w-16 butterfly-flutter"
+		class="hidden lg:block absolute top-1/2 -left-10 w-18 butterfly-flutter"
 		style="--rot:-4deg"
 		aria-hidden="true"
 	  >
@@ -166,11 +166,11 @@ import Heading from "../components/Heading.astro";
   
 	  <!-- Butterfly5 (bottom-right) -->
 	  <div
-		class="hidden lg:block absolute -bottom-10 -right-10 w-20 butterfly-fly"
+		class="hidden lg:block absolute -bottom-10 -right-10 w-22 butterfly-fly"
 		style="--rot:8deg"
 		aria-hidden="true"
 	  >
-		<img src="/butterfly5.svg" alt="" class="w-20 butterfly-img" />
+		<img src="/butterfly5.svg" alt="" class="w-22 butterfly-img" />
 	  </div>
   
 	  <Heading
@@ -193,124 +193,109 @@ import Heading from "../components/Heading.astro";
 </script>
 
 <style>
-/* --- Butterfly #1 (short fly-around) --- */
-@keyframes flyAround {
-  0%   { transform: translate(0,0) rotate(var(--rot,0)); }
-  20%  { transform: translate(40px,-40px) rotate(calc(var(--rot,0) + 20deg)); }
-  40%  { transform: translate(80px,-10px) rotate(calc(var(--rot,0) - 10deg)); }
-  60%  { transform: translate(-20px,-50px) rotate(calc(var(--rot,0) + 15deg)); }
-  80%  { transform: translate(-40px,-20px) rotate(calc(var(--rot,0) - 10deg)); }
-  100% { transform: translate(0,0) rotate(var(--rot,0)); }
-}
-.butterfly-fly .butterfly-img { transition: transform 0.3s ease; }
-.butterfly-fly:hover .butterfly-img { animation: flyAround 2.5s ease-in-out forwards; }
+/* ===============================
+   GRAND MOTION SET
+   (idle = always on, hover = extra)
+   =============================== */
 
-/* --- Butterfly #2 (flutter on hover—no glow) --- */
-@keyframes flutter {
-  0%   { transform: translateY(0) rotate(calc(var(--rot,0) - 3deg)) scale(1); }
-  25%  { transform: translateY(-2px) rotate(calc(var(--rot,0) + 6deg)) scale(1.03); }
-  50%  { transform: translateY(0) rotate(calc(var(--rot,0) - 2deg)) scale(1.01); }
-  75%  { transform: translateY(-1px) rotate(calc(var(--rot,0) + 4deg)) scale(1.03); }
-  100% { transform: translateY(0) rotate(var(--rot,0)) scale(1); }
+/* ---------- Butterflies (idle) ---------- */
+/* gentle looping drift + subtle flutter together */
+@keyframes bf-drift-loop {
+  0%   { transform: translate(0,0) rotate(var(--rot,0deg)); }
+  25%  { transform: translate(22px,-16px) rotate(calc(var(--rot,0deg) + 6deg)); }
+  50%  { transform: translate(10px,8px)   rotate(calc(var(--rot,0deg) - 4deg)); }
+  75%  { transform: translate(-18px,-10px) rotate(calc(var(--rot,0deg) + 5deg)); }
+  100% { transform: translate(0,0) rotate(var(--rot,0deg)); }
 }
-.butterfly-flutter .butterfly-img { transition: transform 0.3s ease; }
-.butterfly-flutter:hover .butterfly-img { animation: flutter 500ms ease-in-out infinite; }
-
-/* --- Butterfly #3 (idle flutter + BIG flight on hover) --- */
-@keyframes flutterIdle {
-  0%   { transform: translateY(0) rotate(calc(var(--rot,0) - 2deg)) scale(1); }
-  50%  { transform: translateY(-3px) rotate(calc(var(--rot,0) + 4deg)) scale(1.02); }
-  100% { transform: translateY(0) rotate(var(--rot,0)) scale(1); }
-}
-.butterfly-fly-big .butterfly-img {
-  animation: flutterIdle 2s ease-in-out infinite;
-  transition: transform 0.3s ease;
-}
-@keyframes flyAroundBig {
-  0%   { transform: translate(0,0) rotate(var(--rot,0)); }
-  15%  { transform: translate(80px,-60px) rotate(calc(var(--rot,0) + 20deg)); }
-  30%  { transform: translate(160px,-20px) rotate(calc(var(--rot,0) - 10deg)); }
-  50%  { transform: translate(-60px,-100px) rotate(calc(var(--rot,0) + 25deg)); }
-  70%  { transform: translate(-100px,-40px) rotate(calc(var(--rot,0) - 15deg)); }
-  100% { transform: translate(0,0) rotate(var(--rot,0)); }
-}
-.butterfly-fly-big:hover .butterfly-img { animation: flyAroundBig 3.5s ease-in-out forwards; }
-
-/* 🌸 Flower */
-@keyframes sway {
-  0%,100% { transform: rotate(-4deg) translateY(0); }
-  50%     { transform: rotate(4deg) translateY(-2px); }
-}
-@keyframes spinBloom {
-  0%   { transform: scale(1) rotate(0deg); }
-  50%  { transform: scale(1.2) rotate(180deg); }
-  100% { transform: scale(1) rotate(360deg); }
-}
-.flower-anim {
-  animation: sway 5s ease-in-out infinite;
-  transition: transform 0.3s ease, filter 0.3s ease;
-}
-.flower-anim:hover {
-  animation: spinBloom 1.5s ease-in-out;
-  filter: drop-shadow(0 0 18px hsla(223, 100%, 50%, 0.966));
+@keyframes bf-wing {
+  0%,100% { transform: scale(1)   }
+  50%     { transform: scale(1.08) }
 }
 
-/* --- Sun --- */
-@keyframes spinBob {
-  0%   { transform: translateY(0) rotate(0deg); }
-  50%  { transform: translateY(-6px) rotate(180deg); }
-  100% { transform: translateY(0) rotate(360deg); }
-}
-.animate-sun { animation: spinBob 18s linear infinite; }
-
-/* Motion safety */
-@media (prefers-reduced-motion: reduce) {
-  .animate-sun, .butterfly-img, .flower-anim { animation: none !important; }
+/* Apply stronger idle to ALL butterflies by default */
+.butterfly-img {
+  will-change: transform, filter;
+  animation:
+    bf-drift-loop 10s ease-in-out infinite,
+    bf-wing       1.2s ease-in-out infinite;
+  transition: transform .3s ease, filter .3s ease;
 }
 
-/* 🌸 Flowers idle sway */
-@keyframes sway {
-  0%,100% { transform: rotate(-4deg) translateY(0); }
-  50%     { transform: rotate(4deg) translateY(-3px); }
-}
-.flower-anim {
-  animation: sway 5s ease-in-out infinite;
-  transition: transform 0.3s ease, filter 0.3s ease;
-}
-.flower-anim:hover {
-  transform: scale(1.15);
-  filter: drop-shadow(0 0 14px var(--color-primary));
-}
-
-/* 🦋 Butterfly flutter hover */
-@keyframes flutter {
-  0%   { transform: translateY(0) rotate(calc(var(--rot,0) - 3deg)) scale(1); }
-  25%  { transform: translateY(-3px) rotate(calc(var(--rot,0) + 6deg)) scale(1.05); }
-  50%  { transform: translateY(0) rotate(calc(var(--rot,0) - 2deg)) scale(1); }
-  75%  { transform: translateY(-2px) rotate(calc(var(--rot,0) + 4deg)) scale(1.05); }
-  100% { transform: translateY(0) rotate(var(--rot,0)) scale(1); }
+/* ---------- Butterflies (hover) ---------- */
+/* “flutter” for the perchers */
+@keyframes bf-flutter-grand {
+  0%   { transform: translateY(0)  rotate(calc(var(--rot,0deg) - 6deg)) scale(1.02); }
+  25%  { transform: translateY(-6px) rotate(calc(var(--rot,0deg) + 12deg)) scale(1.08); }
+  50%  { transform: translateY(0)  rotate(calc(var(--rot,0deg) - 4deg))  scale(1.03); }
+  75%  { transform: translateY(-4px) rotate(calc(var(--rot,0deg) + 10deg)) scale(1.08); }
+  100% { transform: translateY(0)  rotate(var(--rot,0deg))               scale(1.02); }
 }
 .butterfly-flutter:hover .butterfly-img {
-  animation: flutter 600ms ease-in-out infinite;
+  /* override idle while hovering */
+  animation: bf-flutter-grand 700ms ease-in-out infinite;
+  filter: drop-shadow(0 0 10px rgba(255,255,255,.45));
 }
 
-/* 🦋 Butterfly fly-around (larger path) */
-@keyframes flyAround {
-  0%   { transform: translate(0,0) rotate(var(--rot,0)); }
-  20%  { transform: translate(60px,-50px) rotate(calc(var(--rot,0) + 20deg)); }
-  40%  { transform: translate(120px,-10px) rotate(calc(var(--rot,0) - 10deg)); }
-  60%  { transform: translate(-30px,-80px) rotate(calc(var(--rot,0) + 25deg)); }
-  80%  { transform: translate(-60px,-20px) rotate(calc(var(--rot,0) - 15deg)); }
-  100% { transform: translate(0,0) rotate(var(--rot,0)); }
+/* Big scenic flight for the flyers */
+@keyframes bf-flyaround-grand {
+  0%   { transform: translate(0,0) rotate(var(--rot,0deg)); }
+  10%  { transform: translate(90px,-90px) rotate(calc(var(--rot,0deg) + 20deg)); }
+  28%  { transform: translate(200px,-40px) rotate(calc(var(--rot,0deg) - 10deg)); }
+  50%  { transform: translate(-80px,-160px) rotate(calc(var(--rot,0deg) + 30deg)); }
+  72%  { transform: translate(-140px,-40px) rotate(calc(var(--rot,0deg) - 20deg)); }
+  100% { transform: translate(0,0) rotate(var(--rot,0deg)); }
 }
-.butterfly-fly:hover .butterfly-img {
-  animation: flyAround 3s ease-in-out forwards;
+.butterfly-fly:hover .butterfly-img,
+.butterfly-fly-big:hover .butterfly-img {
+  animation: bf-flyaround-grand 4s cubic-bezier(.2,.7,.2,1) forwards;
+  filter: drop-shadow(0 0 12px rgba(255,255,255,.35));
 }
 
-/* 🛡️ Motion safety */
+/* ---------- Flowers ---------- */
+/* grander idle sway */
+@keyframes fl-sway-grand {
+  0%,100% { transform: rotate(-8deg) translateY(0); }
+  50%     { transform: rotate(8deg) translateY(-6px); }
+}
+.flower-anim {
+  will-change: transform, filter;
+  animation: fl-sway-grand 4.5s ease-in-out infinite;
+  transition: transform .35s ease, filter .35s ease;
+}
+/* hover = bigger spin + bloom + bright blue glow */
+@keyframes fl-spinbloom-grand {
+  0%   { transform: scale(1.0)  rotate(0deg); }
+  40%  { transform: scale(1.25) rotate(200deg); }
+  100% { transform: scale(1.08) rotate(360deg); }
+}
+.flower-anim:hover {
+  animation: fl-spinbloom-grand 1.6s ease-in-out;
+  filter: drop-shadow(0 0 20px rgba(80,150,255,.9));
+}
+
+/* ---------- Sun ---------- */
+/* faster spin + deeper bob, plus a soft pulse layered in */
+@keyframes sun-spinbob-grand {
+  0%   { transform: translateY(0) rotate(0deg); }
+  50%  { transform: translateY(-10px) rotate(180deg); }
+  100% { transform: translateY(0) rotate(360deg); }
+}
+@keyframes sun-pulse {
+  0%,100% { filter: drop-shadow(0 0 0 rgba(255,220,120,.0)); }
+  50%     { filter: drop-shadow(0 0 14px rgba(255,220,120,.55)); }
+}
+.animate-sun {
+  animation:
+    sun-spinbob-grand 16s linear infinite,
+    sun-pulse          5s ease-in-out infinite;
+  will-change: transform, filter;
+}
+/* (you already scale/glow the wrapper on hover; that still works) */
+
+/* ---------- Motion safety ---------- */
 @media (prefers-reduced-motion: reduce) {
-  .flower-anim,
-  .butterfly-img { animation: none !important; }
+  .animate-sun,
+  .butterfly-img,
+  .flower-anim { animation: none !important; filter: none !important; }
 }
-
 </style>
