@@ -19,7 +19,7 @@ import Heading from "../components/Heading.astro";
     <div class="relative border-3 border-[var(--color-primary)] rounded-xl col-span-1 lg:col-span-7 p-6 lg:p-4">
       <!-- Butterfly #2 (flutters on hover, no glow) -->
       <div
-        class="butterfly-flutter absolute cursor-pointer select-none top-[410px] left-[400px] w-26"
+        class=" hidden lg:block butterfly-flutter absolute cursor-pointer select-none top-[410px] left-[400px] w-26 "
         style="--rot:-6deg"
       >
         <img src="/butterfly2.svg" alt="" aria-hidden="true" class="butterfly-img block w-full" />
@@ -38,7 +38,7 @@ import Heading from "../components/Heading.astro";
     <div class="relative border-3 border-[var(--color-primary)] rounded-xl col-span-1 lg:col-span-4 lg:col-start-9">
       <!-- Butterfly #1 (flies around on hover) -->
       <div
-        class="butterfly-fly absolute cursor-pointer select-none top-[-20px] right-[-20px] w-24"
+        class=" hidden lg:block butterfly-fly absolute cursor-pointer select-none top-[-20px] right-[-20px] w-24"
         style="--rot:6deg"
       >
         <img src="/butterfly1.svg" alt="" aria-hidden="true" class="butterfly-img block w-full" />
@@ -111,30 +111,80 @@ import Heading from "../components/Heading.astro";
   </section>
 
   <!-- Past Projects -->
-  <section class="pastprojects m-8 lg:m-20">
-	<div class="border-3 border-[var(--color-primary)] rounded-xl p-6 lg:p-8">
-	  <Heading htmlheading="h2" font="header" stylingclasses="text-[var(--color-primary)]">
-		Past Projects
-	  </Heading>
+  <section class="pastprojects m-8 lg:m-20 relative">
+	<Heading
+	  htmlheading="h2"
+	  font="header"
+	  stylingclasses="text-[var(--color-primary)] underline"
+	>
+	  Past Projects
+	</Heading>
   
-	  <Heading htmlheading="h3" font="header" stylingclasses="text-[var(--color-primary)]">
+	<!-- Logofolio block -->
+	<section class="relative mt-6 border-3 border-[var(--color-primary)] rounded-xl p-6 lg:p-8">
+	  <!-- Flower2 (top-right) -->
+	  <img
+		src="/flower2.svg"
+		alt=""
+		class="hidden lg:block absolute -top-6 -right-6 w-14 flower-anim"
+		aria-hidden="true"
+	  />
+  
+	  <!-- Butterfly4 (left side) -->
+	  <div
+		class="hidden lg:block absolute top-1/2 -left-10 w-16 butterfly-flutter"
+		style="--rot:-4deg"
+		aria-hidden="true"
+	  >
+		<img src="/butterfly4.svg" alt="" class="w-full butterfly-img" />
+	  </div>
+  
+	  <Heading
+		htmlheading="h3"
+		font="header"
+		stylingclasses="text-[var(--color-primary)] mb-4"
+	  >
 		Logofolio
 	  </Heading>
-	  <div class="grid grid-cols-1 justify-items-center lg:grid-cols-4 gap-4">
-		<img src="/kulturnat_logo.svg" alt="Kulturnat Logo" />
-		<img src="/ccc_logo.svg" alt="CCC Logo" />
-		<img src="/thehungrypassport_logo.svg" alt="The Hungry Passport Logo" />
-		<img src="/maksofilm_logo.svg" alt="Maksofilm Logo" />
+	  <div class="grid grid-cols-1 justify-items-center gap-6 lg:grid-cols-4">
+		<img src="/kulturnat_logo.svg" alt="Kulturnat Logo" class="w-full max-w-[220px] object-contain" />
+		<img src="/ccc_logo.svg" alt="CCC Logo" class="w-full max-w-[220px] object-contain" />
+		<img src="/thehungrypassport_logo.svg" alt="The Hungry Passport Logo" class="w-full max-w-[220px] object-contain" />
+		<img src="/maksofilm_logo.svg" alt="Maksofilm Logo" class="w-full max-w-[220px] object-contain" />
+	  </div>
+	</section>
+  
+	<!-- Character Design block -->
+	<section class="relative mt-6 border-3 border-[var(--color-primary)] rounded-xl p-6 lg:p-8">
+	  <!-- Flower3 (bottom-left) -->
+	  <img
+		src="/flower3.svg"
+		alt=""
+		class="hidden lg:block absolute -bottom-8 -left-8 w-20 flower-anim"
+		aria-hidden="true"
+	  />
+  
+	  <!-- Butterfly5 (bottom-right) -->
+	  <div
+		class="hidden lg:block absolute -bottom-10 -right-10 w-20 butterfly-fly"
+		style="--rot:8deg"
+		aria-hidden="true"
+	  >
+		<img src="/butterfly5.svg" alt="" class="w-20 butterfly-img" />
 	  </div>
   
-	  <Heading htmlheading="h3" font="header" stylingclasses="text-[var(--color-primary)]">
+	  <Heading
+		htmlheading="h3"
+		font="header"
+		stylingclasses="text-[var(--color-primary)] mb-4"
+	  >
 		Character Design
 	  </Heading>
-	  <div class="grid grid-cols-1 justify-items-center lg:grid-cols-2 gap-4">
-		<img src="/game_characters.svg" alt="Game Characters" />
-		<img src="/instant_characters.svg" alt="Instant Characters" />
+	  <div class="grid grid-cols-1 justify-items-center gap-6 lg:grid-cols-2">
+		<img src="/game_characters.svg" alt="Game Characters" class="w-full max-w-[520px] object-contain" />
+		<img src="/instant_characters.svg" alt="Instant Characters" class="w-full max-w-[520px] object-contain" />
 	  </div>
-	</div>
+	</section>
   </section>
 </MainLayout>
 
@@ -218,5 +268,49 @@ import Heading from "../components/Heading.astro";
   .animate-sun, .butterfly-img, .flower-anim { animation: none !important; }
 }
 
+/* 🌸 Flowers idle sway */
+@keyframes sway {
+  0%,100% { transform: rotate(-4deg) translateY(0); }
+  50%     { transform: rotate(4deg) translateY(-3px); }
+}
+.flower-anim {
+  animation: sway 5s ease-in-out infinite;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+.flower-anim:hover {
+  transform: scale(1.15);
+  filter: drop-shadow(0 0 14px var(--color-primary));
+}
+
+/* 🦋 Butterfly flutter hover */
+@keyframes flutter {
+  0%   { transform: translateY(0) rotate(calc(var(--rot,0) - 3deg)) scale(1); }
+  25%  { transform: translateY(-3px) rotate(calc(var(--rot,0) + 6deg)) scale(1.05); }
+  50%  { transform: translateY(0) rotate(calc(var(--rot,0) - 2deg)) scale(1); }
+  75%  { transform: translateY(-2px) rotate(calc(var(--rot,0) + 4deg)) scale(1.05); }
+  100% { transform: translateY(0) rotate(var(--rot,0)) scale(1); }
+}
+.butterfly-flutter:hover .butterfly-img {
+  animation: flutter 600ms ease-in-out infinite;
+}
+
+/* 🦋 Butterfly fly-around (larger path) */
+@keyframes flyAround {
+  0%   { transform: translate(0,0) rotate(var(--rot,0)); }
+  20%  { transform: translate(60px,-50px) rotate(calc(var(--rot,0) + 20deg)); }
+  40%  { transform: translate(120px,-10px) rotate(calc(var(--rot,0) - 10deg)); }
+  60%  { transform: translate(-30px,-80px) rotate(calc(var(--rot,0) + 25deg)); }
+  80%  { transform: translate(-60px,-20px) rotate(calc(var(--rot,0) - 15deg)); }
+  100% { transform: translate(0,0) rotate(var(--rot,0)); }
+}
+.butterfly-fly:hover .butterfly-img {
+  animation: flyAround 3s ease-in-out forwards;
+}
+
+/* 🛡️ Motion safety */
+@media (prefers-reduced-motion: reduce) {
+  .flower-anim,
+  .butterfly-img { animation: none !important; }
+}
 
 </style>
