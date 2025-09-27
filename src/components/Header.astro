@@ -1,36 +1,43 @@
 ---
+import LangToggle from "./LangToggle.astro"; // adjust path if needed
 const pathname = new URL(Astro.request.url).pathname;
 const currentPath = pathname.slice(1);
 ---
 <header x-data="{ showmenu: false }" class="w-full pt-6">
-  <div id="navbar" class="max-w-7xl mx-auto px-6 py-4 flex flex-row justify-center items-center">
+  <div id="navbar" class="max-w-7xl mx-auto px-6 py-4 flex flex-row justify-center items-center relative">
     <!-- Desktop Menu -->
-    <nav id="desktopmenu" class="hidden lg:block w-full">
-      <ul class="flex flex-row justify-evenly w-full gap-20">
+    <nav id="desktopmenu" class="hidden lg:flex w-full items-center justify-center relative">
+      <!-- Centered nav list -->
+      <ul class="flex flex-row items-center gap-20">
         <li>
           <a href="/#about"
              class="font-sans font-semibold text-4xl text-[var(--color-primary)] transition-all duration-200 hover:scale-105 hover:text-[var(--color-background)] hover:bg-[var(--color-primary)] px-5 py-3 rounded-full">
-            About
+            <span data-i18n="nav.about">About</span>
           </a>
         </li>
         <li>
           <a href="/#skills"
              class="font-sans font-semibold text-4xl text-[var(--color-primary)] transition-all duration-200 hover:scale-105 hover:text-[var(--color-background)] hover:bg-[var(--color-primary)] px-5 py-3 rounded-full">
-            Skills
+            <span data-i18n="nav.skills">Skills</span>
           </a>
         </li>
         <li>
           <a href="/#contact"
              class="font-sans font-semibold text-4xl text-[var(--color-primary)] transition-all duration-200 hover:scale-105 hover:text-[var(--color-background)] hover:bg-[var(--color-primary)] px-5 py-3 rounded-full">
-            Contact
+            <span data-i18n="nav.contact">Contact</span>
           </a>
         </li>
       </ul>
+
+      <!-- Lang toggle pinned to the right -->
+      <div class="absolute right-0">
+        <LangToggle />
+      </div>
     </nav>
 
     <!-- Burger Menu Button (mobile only) -->
     <button id="burgermenu" class="lg:hidden absolute right-6 flex flex-col justify-center items-center w-10 h-10"
-      x-on:click="showmenu = !showmenu">
+      x-on:click="showmenu = !showmenu" aria-label="Open menu">
       <span :class="showmenu ? 'rotate-45 translate-y-2' : ''"
         class="block w-8 h-1 bg-[var(--color-primary)] rounded transition-all duration-300"></span>
       <span :class="showmenu ? 'opacity-0' : ''"
@@ -45,13 +52,24 @@ const currentPath = pathname.slice(1);
     x-show="showmenu" x-transition x-on:click="showmenu = false" x-on:click.outside="showmenu = false">
     <ul class="border-t-2 border-b-2 border-[var(--color-primary)]">
       <li class="text-center py-3">
-        <a href="/#about" class="font-sans font-semibold text-2xl text-[var(--color-primary)] hover:text-[var(--color-background)] hover:bg-[var(--color-primary)] px-4 py-2 rounded-full transition-all duration-200">About</a>
+        <a href="/#about" class="font-sans font-semibold text-2xl text-[var(--color-primary)] hover:text-[var(--color-background)] hover:bg-[var(--color-primary)] px-4 py-2 rounded-full transition-all duration-200">
+          <span data-i18n="nav.about">About</span>
+        </a>
       </li>
       <li class="text-center py-3">
-        <a href="/#skills" class="font-sans font-semibold text-2xl text-[var(--color-primary)] hover:text-[var(--color-background)] hover:bg-[var(--color-primary)] px-4 py-2 rounded-full transition-all duration-200">Skills</a>
+        <a href="/#skills" class="font-sans font-semibold text-2xl text-[var(--color-primary)] hover:text-[var(--color-background)] hover:bg-[var(--color-primary)] px-4 py-2 rounded-full transition-all duration-200">
+          <span data-i18n="nav.skills">Skills</span>
+        </a>
       </li>
       <li class="text-center py-3">
-        <a href="/#contact" class="font-sans font-semibold text-2xl text-[var(--color-primary)] hover:text-[var(--color-background)] hover:bg-[var(--color-primary)] px-4 py-2 rounded-full transition-all duration-200">Contact</a>
+        <a href="/#contact" class="font-sans font-semibold text-2xl text-[var(--color-primary)] hover:text-[var(--color-background)] hover:bg-[var(--color-primary)] px-4 py-2 rounded-full transition-all duration-200">
+          <span data-i18n="nav.contact">Contact</span>
+        </a>
+      </li>
+
+      <!-- Mobile lang toggle -->
+      <li class="text-center py-4">
+        <LangToggle />
       </li>
     </ul>
   </nav>

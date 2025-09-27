@@ -8,14 +8,20 @@
   phone = "+45 12 34 56 78",           // change me
   cvUrl = "/cv.pdf"                    // change me (put your PDF in /public)
 } = Astro.props;
+
 import Heading from "./Heading.astro";
 ---
 
 <footer class="mt-24 mb-12 pb-18">
   <section class="text-center">
     <!-- Title -->
-    <Heading htmlheading="h2" font="header" stylingclasses="text-[var(--color-primary)]">{title}</Heading>
-
+    <Heading htmlheading="h2" font="header" stylingclasses="text-[var(--color-primary)] pb-5">
+      {
+        title === "Contact"
+          ? <span data-i18n="nav.contact">Contact</span>
+          : title
+      }
+    </Heading>
 
     <!-- Icons -->
     <nav aria-label="Contact links" class="flex items-center justify-center gap-16 lg:gap-28">
@@ -25,7 +31,7 @@ import Heading from "./Heading.astro";
         aria-label="Email me"
         class="icon-wrap group"
       >
-        <img src="/email.svg" alt="" class="icon icon-email" />
+        <img src="/email.svg" alt="email" class="icon icon-email" />
       </a>
 
       <!-- Phone -->
@@ -34,7 +40,7 @@ import Heading from "./Heading.astro";
         aria-label="Call me"
         class="icon-wrap group"
       >
-        <img src="/phone.svg" alt="" class="icon icon-phone" />
+        <img src="/phone.svg" alt="phone" class="icon icon-phone" />
       </a>
 
       <!-- CV -->
@@ -45,7 +51,7 @@ import Heading from "./Heading.astro";
         aria-label="Open my CV (PDF)"
         class="icon-wrap group"
       >
-        <img src="/cv.svg" alt="" class="icon icon-cv" />
+        <img src="/cv.svg" alt="cv" class="icon icon-cv" />
       </a>
     </nav>
   </section>
@@ -53,77 +59,55 @@ import Heading from "./Heading.astro";
 
 <style>
 /* ---------- shared icon styles ---------- */
-.icon-wrap {
-  display:inline-flex;
-  outline: none;
-}
+.icon-wrap { display:inline-flex; outline: none; }
 .icon {
-  width: 3.5rem;           /* ~56px on mobile */
+  width: 3.5rem;
   height: auto;
   filter: drop-shadow(0 0 0 transparent);
   transition: transform .25s ease, filter .25s ease;
   will-change: transform, filter;
   animation: idleFloat 6.5s ease-in-out infinite;
 }
-@media (min-width: 1024px){
-  .icon { width: 4.5rem; } /* larger on desktop */
-}
-
-/* focus-visible for keyboard users */
+@media (min-width: 1024px){ .icon { width: 4.5rem; } }
 .icon-wrap:focus-visible .icon,
 .icon-wrap:focus .icon {
   filter: drop-shadow(0 0 16px var(--color-primary));
   transform: translateY(-2px) scale(1.05);
 }
-
-/* ---------- idle motion ---------- */
-@keyframes idleFloat {
-  0%,100% { transform: translateY(0); }
-  50%     { transform: translateY(-6px); }
-}
-
-/* Stagger idle timing so they don't move in sync */
+@keyframes idleFloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
 .icon-email { animation-delay: .0s; }
 .icon-phone { animation-delay: .9s; }
 .icon-cv    { animation-delay: 1.8s; }
-
-/* ---------- hover micro-interactions ---------- */
-/* Email: gentle flap + glow */
+/* Hovers */
 .icon-wrap:hover .icon-email {
   transform: translateY(-4px) rotate(-3deg) scale(1.06);
   filter: drop-shadow(0 0 14px var(--color-primary));
   animation: emailFlap 800ms ease-in-out;
 }
 @keyframes emailFlap {
-  0%   { transform: translateY(0) rotate(0) scale(1); }
-  40%  { transform: translateY(-6px) rotate(-6deg) scale(1.07); }
-  70%  { transform: translateY(-2px) rotate(2deg)  scale(1.05); }
+  0% { transform: translateY(0) rotate(0) scale(1); }
+  40% { transform: translateY(-6px) rotate(-6deg) scale(1.07); }
+  70% { transform: translateY(-2px) rotate(2deg) scale(1.05); }
   100% { transform: translateY(-4px) rotate(-3deg) scale(1.06); }
 }
-
-/* Phone: ring wiggle */
 .icon-wrap:hover .icon-phone {
   animation: phoneRing 900ms ease-in-out;
   filter: drop-shadow(0 0 14px var(--color-primary));
   transform: translateY(-3px) scale(1.06);
 }
 @keyframes phoneRing {
-  0%   { transform: translateY(-3px) rotate(0)   scale(1.06); }
-  20%  { transform: translateY(-3px) rotate(-12deg) scale(1.06); }
-  40%  { transform: translateY(-3px) rotate(10deg)  scale(1.06); }
-  60%  { transform: translateY(-3px) rotate(-8deg)  scale(1.06); }
-  80%  { transform: translateY(-3px) rotate(6deg)   scale(1.06); }
-  100% { transform: translateY(-3px) rotate(0)      scale(1.06); }
+  0% { transform: translateY(-3px) rotate(0) scale(1.06); }
+  20% { transform: translateY(-3px) rotate(-12deg) scale(1.06); }
+  40% { transform: translateY(-3px) rotate(10deg) scale(1.06); }
+  60% { transform: translateY(-3px) rotate(-8deg) scale(1.06); }
+  80% { transform: translateY(-3px) rotate(6deg) scale(1.06); }
+  100% { transform: translateY(-3px) rotate(0) scale(1.06); }
 }
-
-/* CV: page tilt + pop */
 .icon-wrap:hover .icon-cv {
   transform: translateY(-5px) rotateX(14deg) rotate(-2deg) scale(1.07);
   filter: drop-shadow(0 0 14px var(--color-primary));
   transform-style: preserve-3d;
 }
-
-/* Heading underline sweep (re-usable) */
 .heading-sweep { position: relative; display:inline-block; }
 .heading-sweep::after{
   content:""; position:absolute; left:0; bottom:-.22em; height:.16em; width:100%;
@@ -134,8 +118,6 @@ import Heading from "./Heading.astro";
   transition: transform .7s cubic-bezier(.2,.7,.2,1);
 }
 .heading-sweep:hover::after { transform: scaleX(1); }
-
-/* Motion safety */
 @media (prefers-reduced-motion: reduce) {
   .icon { animation: none !important; }
   .icon-wrap:hover .icon { transform: none !important; filter: none !important; }

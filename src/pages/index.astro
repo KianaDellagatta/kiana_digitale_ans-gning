@@ -1,9 +1,9 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
 import Pill from "../components/Pill.astro";
-import Link from "../components/Link.astro";
 import Text from "../components/Text.astro";
 import Heading from "../components/Heading.astro";
+import LangToggle from "../components/LangToggle.astro";
 ---
 
 <MainLayout title="">
@@ -14,52 +14,49 @@ import Heading from "../components/Heading.astro";
   </div>
 
   <!-- About -->
-  <section class=" grid grid-cols-1 lg:grid-cols-12 gap-4 m-8 lg:m-20 ">
+  <section id="about" class="grid grid-cols-1 lg:grid-cols-12 gap-4 m-8 lg:m-20 mb-20">
     <!-- About card -->
     <div class="relative border-3 border-[var(--color-primary)] rounded-xl col-span-1 lg:col-span-7 p-6 lg:p-4">
-      <!-- Butterfly #2 (flutters on hover, no glow) -->
-      <div
-        class=" hidden lg:block butterfly-flutter absolute cursor-pointer select-none top-[410px] left-[400px] w-26 "
-        style="--rot:-6deg"
-      >
+      <!-- Butterfly #2 -->
+      <div class="hidden lg:block butterfly-flutter absolute cursor-pointer select-none top-[445px] left-[480px] w-20" style="--rot:-6deg">
         <img src="/butterfly2.svg" alt="" aria-hidden="true" class="butterfly-img block w-full" />
       </div>
 
-      <Heading htmlheading="h2" font="header" stylingclasses="text-[var(--color-primary)]">About</Heading>
+      <Heading htmlheading="h2" font="header" stylingclasses="text-[var(--color-primary)]" >
+        <span data-i18n="about.h2">About</span>
+      </Heading>
+
       <Text teksttype="paragraph" stylingclasses="text-[var(--color-primary)]">
-		I am a Multimedia Design student in my 3rd semester, focusing on digital design, especially UX/UI and graphic design.
-		I am passionate about creating creative solutions that speak to the target audience.
-		During my internship, I want to gain insight into professional design processes and teamwork.
-		As a colleague, I am collaborative, communicative, and contribute with creativity.
+        <span data-i18n="about.p">
+          My name is Kiana DellaGatta, I am a Multimedia Design student in my 3rd semester, focusing on digital design,
+          especially UX/UI and graphic design. I am passionate about creating creative solutions that speak to the target
+          audience. During my internship, I want to gain insight into professional design processes and teamwork. As a
+          colleague, I am collaborative, communicative, and contribute with creativity.
+        </span>
       </Text>
     </div>
 
     <!-- Image card -->
     <div class="relative border-3 border-[var(--color-primary)] rounded-xl col-span-1 lg:col-span-4 lg:col-start-9">
-      <!-- Butterfly #1 (flies around on hover) -->
-      <div
-        class=" hidden lg:block butterfly-fly absolute cursor-pointer select-none top-[-20px] right-[-20px] w-24"
-        style="--rot:6deg"
-      >
+      <!-- Butterfly #1 -->
+      <div class="hidden lg:block butterfly-fly absolute cursor-pointer select-none top-[-20px] right-[-20px] w-24" style="--rot:6deg">
         <img src="/butterfly1.svg" alt="" aria-hidden="true" class="butterfly-img block w-full" />
       </div>
-
       <img src="/Kiana.png" alt="Picture of Kiana" class="rounded-xl w-full h-full object-cover" />
     </div>
   </section>
 
   <!-- Skills grid -->
-  <section class=" grid grid-cols-1 lg:grid-cols-12 lg:grid-rows-2 gap-4 m-8 lg:m-20">
+  <section id="skills" class="grid grid-cols-1 lg:grid-cols-12 lg:grid-rows-2 gap-4 m-8 lg:m-20 mb-20">
+
     <!-- Languages -->
     <div class="relative col-span-1 lg:col-span-5 lg:row-span-1 border-3 border-[var(--color-primary)] rounded-xl p-6 lg:p-4">
-      <img
-        src="/flower.svg"
-        alt=""
-        aria-hidden="true"
-        class="hidden lg:block absolute -top-6 -left-6 w-14 z-20 select-none flower-anim parallax"
-      />
-      <Heading htmlheading="h3" font="header" stylingclasses="text-[var(--color-primary)]">Languages</Heading>
+      <img src="/flower.svg" alt="" aria-hidden="true" class="hidden lg:block absolute -top-6 -left-6 w-14 z-20 select-none flower-anim parallax" />
+      <Heading htmlheading="h3" font="header" stylingclasses="text-[var(--color-primary)]">
+        <span data-i18n="languages.h3">Languages</span>
+      </Heading>
       <div class="space-x-4 space-y-4">
+        <!-- Pills left as-is -->
         <Pill label="English - Native" />
         <Pill label="Danish - Fluent" />
       </div>
@@ -67,235 +64,76 @@ import Heading from "../components/Heading.astro";
 
     <!-- Education -->
     <div class="relative col-span-1 lg:col-span-5 lg:row-start-2 border-3 border-[var(--color-primary)] rounded-xl p-6 lg:p-4">
-      <div
-        class="hidden lg:block absolute -bottom-10 right-10 w-16 z-20 cursor-pointer select-none butterfly-fly-big"
-        style="--rot:-6deg"
-        aria-hidden="true"
-      >
+      <div class="hidden lg:block absolute -bottom-10 right-10 w-16 z-20 cursor-pointer select-none butterfly-fly-big" style="--rot:-6deg" aria-hidden="true">
         <img src="/butterfly3.svg" alt="" class="block w-full butterfly-img" />
       </div>
 
-      <Heading htmlheading="h3" font="header" stylingclasses="text-[var(--color-primary)]">Education</Heading>
+      <Heading htmlheading="h3" font="header" stylingclasses="text-[var(--color-primary)]">
+        <span data-i18n="education.h3">Education</span>
+      </Heading>
       <div class="space-x-4 space-y-4">
-        <Pill label="2024 - Current" />
+        <Pill label="2024 - 2026" />
       </div>
       <Text teksttype="paragraph" stylingclasses="text-[var(--color-primary)]">
-        Multimediedesigner, EK - Københavns Erhvervsakademi
+        <span data-i18n="education.p">Multimediedesigner, EK - Københavns Erhvervsakademi</span>
       </Text>
     </div>
 
-    <!-- Skills (tall, right) -->
+    <!-- Skills -->
     <div class="relative col-span-1 lg:col-span-7 lg:col-start-7 lg:row-span-2 border-3 border-[var(--color-primary)] rounded-xl p-6 lg:p-4">
-      <div
-        class="hidden lg:block absolute -top-14 -right-10 z-20 transition-transform duration-200 will-change-transform hover:scale-110 hover:[filter:drop-shadow(0_0_22px_var(--color-primary))]"
-        aria-hidden="true"
-      >
+      <div class="hidden lg:block absolute -top-14 -right-10 z-20 transition-transform duration-200 will-change-transform hover:scale-110 hover:[filter:drop-shadow(0_0_22px_var(--color-primary))]" aria-hidden="true">
         <img src="/sun.svg" alt="" class="w-36 select-none pointer-events-none animate-sun" />
       </div>
 
+      <!-- Intentionally NOT translated -->
       <Heading htmlheading="h3" font="header" stylingclasses="text-[var(--color-primary)]">Skills</Heading>
       <div class="space-x-4 space-y-4">
-        <Pill label="Photoshop" />
-        <Pill label="Premiere Pro" />
-        <Pill label="Figma" />
-        <Pill label="After Effects" />
-        <Pill label="Illustrator" />
-        <Pill label="Light Room" />
-        <Pill label="UX/UI" />
-        <Pill label="Tailwind" />
-        <Pill label="Astro" />
-        <Pill label="HTML/CSS" />
-        <Pill label="Alpine.js" />
+        <Pill label="Photoshop" /><Pill label="Premiere Pro" /><Pill label="Figma" />
+        <Pill label="After Effects" /><Pill label="Illustrator" /><Pill label="Light Room" />
+        <Pill label="UX/UI" /><Pill label="Tailwind" /><Pill label="Astro" />
+        <Pill label="HTML/CSS" /><Pill label="Alpine.js" />
       </div>
     </div>
   </section>
 
   <!-- Past Projects -->
-  <section class="pastprojects m-8 lg:m-20 relative">
-	<Heading
-	  htmlheading="h2"
-	  font="header"
-	  stylingclasses="text-[var(--color-primary)]"
-	>
-	  Past Projects
-	</Heading>
-  
-	<!-- Logofolio block -->
-	<section class="relative mt-6 border-3 border-[var(--color-primary)] rounded-xl p-6 lg:p-8">
-	  <!-- Flower2 (top-right) -->
-	  <img
-		src="/flower2.svg"
-		alt=""
-		class="hidden lg:block absolute -top-6 -right-6 w-20 flower-anim"
-		aria-hidden="true"
-	  />
-  
-	  <!-- Butterfly4 (left side) -->
-	  <div
-		class="hidden lg:block absolute top-1/2 -left-10 w-18 butterfly-flutter"
-		style="--rot:-4deg"
-		aria-hidden="true"
-	  >
-		<img src="/butterfly4.svg" alt="" class="w-full butterfly-img" />
-	  </div>
-  
-	  <Heading
-		htmlheading="h3"
-		font="header"
-		stylingclasses="text-[var(--color-primary)] mb-4"
-	  >
-		Logofolio
-	  </Heading>
-	  <div class="grid grid-cols-2 justify-items-center gap-6 lg:grid-cols-4">
-		<img src="/kulturnat_logo.svg" alt="Kulturnat Logo" class="w-full max-w-[220px] object-contain" />
-		<img src="/ccc_logo.svg" alt="CCC Logo" class="w-full max-w-[220px] object-contain" />
-		<img src="/thehungrypassport_logo.svg" alt="The Hungry Passport Logo" class="w-full max-w-[220px] object-contain" />
-		<img src="/maksofilm_logo.svg" alt="Maksofilm Logo" class="w-full max-w-[220px] object-contain" />
-	  </div>
-	</section>
-  
-	<!-- Character Design block -->
-	<section class="relative mt-6 border-3 border-[var(--color-primary)] rounded-xl p-6 lg:p-8">
-	  <!-- Flower3 (bottom-left) -->
-	  <img
-		src="/flower3.svg"
-		alt=""
-		class="hidden lg:block absolute -bottom-8 -left-8 w-20 flower-anim"
-		aria-hidden="true"
-	  />
-  
-	  <!-- Butterfly5 (bottom-right) -->
-	  <div
-		class="hidden lg:block absolute -bottom-10 -right-10 w-22 butterfly-fly"
-		style="--rot:8deg"
-		aria-hidden="true"
-	  >
-		<img src="/butterfly5.svg" alt="" class="w-22 butterfly-img" />
-	  </div>
-  
-	  <Heading
-		htmlheading="h3"
-		font="header"
-		stylingclasses="text-[var(--color-primary)] mb-4"
-	  >
-		Character Design
-	  </Heading>
-	  <div class="grid grid-cols-1 justify-items-center gap-6 lg:grid-cols-2">
-		<img src="/game_characters.svg" alt="Game Characters" class="w-full max-w-[520px] object-contain" />
-		<img src="/instant_characters.svg" alt="Instant Characters" class="w-full max-w-[520px] object-contain" />
-	  </div>
-	</section>
+  <section class="pastprojects m-8 lg:m-20 relative" id="projects">
+    <Heading htmlheading="h2" font="header" stylingclasses="text-[var(--color-primary)]">
+      <span data-i18n="past.h2">Past Projects</span>
+    </Heading>
+
+    <!-- Logofolio -->
+    <section class="relative mt-6 border-3 border-[var(--color-primary)] rounded-xl p-6 lg:p-8">
+      <img src="/flower2.svg" alt="" class="hidden lg:block absolute -top-6 -right-6 w-20 flower-anim" aria-hidden="true" />
+      <div class="hidden lg:block absolute top-1/2 -left-10 w-18 butterfly-flutter" style="--rot:-4deg" aria-hidden="true">
+        <img src="/butterfly4.svg" alt="" class="w-full butterfly-img" />
+      </div>
+
+      <Heading htmlheading="h3" font="header" stylingclasses="text-[var(--color-primary)] mb-4">
+        <span data-i18n="logofolio.h3">Logofolio</span>
+      </Heading>
+      <div class="grid grid-cols-2 justify-items-center gap-6 lg:grid-cols-4">
+        <img src="/kulturnat_logo.svg" alt="Kulturnat Logo" class="w-full max-w-[220px] object-contain" />
+        <img src="/ccc_logo.svg" alt="CCC Logo" class="w-full max-w-[220px] object-contain" />
+        <img src="/thehungrypassport_logo.svg" alt="The Hungry Passport Logo" class="w-full max-w-[220px] object-contain" />
+        <img src="/maksofilm_logo.svg" alt="Maksofilm Logo" class="w-full max-w-[220px] object-contain" />
+      </div>
+    </section>
+
+    <!-- Character Design -->
+    <section class="relative mt-6 border-3 border-[var(--color-primary)] rounded-xl p-6 lg:p-8">
+      <img src="/flower3.svg" alt="" class="hidden lg:block absolute -bottom-8 -left-8 w-20 flower-anim" aria-hidden="true" />
+      <div class="hidden lg:block absolute -bottom-10 -right-10 w-22 butterfly-fly" style="--rot:8deg" aria-hidden="true">
+        <img src="/butterfly5.svg" alt="" class="w-22 butterfly-img" />
+      </div>
+
+      <Heading htmlheading="h3" font="header" stylingclasses="text-[var(--color-primary)] mb-4">
+        <span data-i18n="characters.h3">Character Design</span>
+      </Heading>
+      <div class="grid grid-cols-1 justify-items-center gap-6 lg:grid-cols-2">
+        <img src="/game_characters.svg" alt="Game Characters" class="w-full max-w-[520px] object-contain" />
+        <img src="/instant_characters.svg" alt="Instant Characters" class="w-full max-w-[520px] object-contain" />
+      </div>
+    </section>
   </section>
 </MainLayout>
-
-<script>
-  // Optional animations or interactivity
-</script>
-
-<style>
-/* ===============================
-   GRAND MOTION SET
-   (idle = always on, hover = extra)
-   =============================== */
-
-/* ---------- Butterflies (idle) ---------- */
-/* gentle looping drift + subtle flutter together */
-@keyframes bf-drift-loop {
-  0%   { transform: translate(0,0) rotate(var(--rot,0deg)); }
-  25%  { transform: translate(22px,-16px) rotate(calc(var(--rot,0deg) + 6deg)); }
-  50%  { transform: translate(10px,8px)   rotate(calc(var(--rot,0deg) - 4deg)); }
-  75%  { transform: translate(-18px,-10px) rotate(calc(var(--rot,0deg) + 5deg)); }
-  100% { transform: translate(0,0) rotate(var(--rot,0deg)); }
-}
-@keyframes bf-wing {
-  0%,100% { transform: scale(1)   }
-  50%     { transform: scale(1.08) }
-}
-
-/* Apply stronger idle to ALL butterflies by default */
-.butterfly-img {
-  will-change: transform, filter;
-  animation:
-    bf-drift-loop 10s ease-in-out infinite,
-    bf-wing       1.2s ease-in-out infinite;
-  transition: transform .3s ease, filter .3s ease;
-}
-
-/* ---------- Butterflies (hover) ---------- */
-/* “flutter” for the perchers */
-@keyframes bf-flutter-grand {
-  0%   { transform: translateY(0)  rotate(calc(var(--rot,0deg) - 6deg)) scale(1.02); }
-  25%  { transform: translateY(-6px) rotate(calc(var(--rot,0deg) + 12deg)) scale(1.08); }
-  50%  { transform: translateY(0)  rotate(calc(var(--rot,0deg) - 4deg))  scale(1.03); }
-  75%  { transform: translateY(-4px) rotate(calc(var(--rot,0deg) + 10deg)) scale(1.08); }
-  100% { transform: translateY(0)  rotate(var(--rot,0deg))               scale(1.02); }
-}
-.butterfly-flutter:hover .butterfly-img {
-  /* override idle while hovering */
-  animation: bf-flutter-grand 700ms ease-in-out infinite;
-  filter: drop-shadow(0 0 10px rgba(255,255,255,.45));
-}
-
-/* Big scenic flight for the flyers */
-@keyframes bf-flyaround-grand {
-  0%   { transform: translate(0,0) rotate(var(--rot,0deg)); }
-  10%  { transform: translate(90px,-90px) rotate(calc(var(--rot,0deg) + 20deg)); }
-  28%  { transform: translate(200px,-40px) rotate(calc(var(--rot,0deg) - 10deg)); }
-  50%  { transform: translate(-80px,-160px) rotate(calc(var(--rot,0deg) + 30deg)); }
-  72%  { transform: translate(-140px,-40px) rotate(calc(var(--rot,0deg) - 20deg)); }
-  100% { transform: translate(0,0) rotate(var(--rot,0deg)); }
-}
-.butterfly-fly:hover .butterfly-img,
-.butterfly-fly-big:hover .butterfly-img {
-  animation: bf-flyaround-grand 4s cubic-bezier(.2,.7,.2,1) forwards;
-  filter: drop-shadow(0 0 12px rgba(255,255,255,.35));
-}
-
-/* ---------- Flowers ---------- */
-/* grander idle sway */
-@keyframes fl-sway-grand {
-  0%,100% { transform: rotate(-8deg) translateY(0); }
-  50%     { transform: rotate(8deg) translateY(-6px); }
-}
-.flower-anim {
-  will-change: transform, filter;
-  animation: fl-sway-grand 4.5s ease-in-out infinite;
-  transition: transform .35s ease, filter .35s ease;
-}
-/* hover = bigger spin + bloom + bright blue glow */
-@keyframes fl-spinbloom-grand {
-  0%   { transform: scale(1.0)  rotate(0deg); }
-  40%  { transform: scale(1.25) rotate(200deg); }
-  100% { transform: scale(1.08) rotate(360deg); }
-}
-.flower-anim:hover {
-  animation: fl-spinbloom-grand 1.6s ease-in-out;
-  filter: drop-shadow(0 0 20px rgba(80,150,255,.9));
-}
-
-/* ---------- Sun ---------- */
-/* faster spin + deeper bob, plus a soft pulse layered in */
-@keyframes sun-spinbob-grand {
-  0%   { transform: translateY(0) rotate(0deg); }
-  50%  { transform: translateY(-10px) rotate(180deg); }
-  100% { transform: translateY(0) rotate(360deg); }
-}
-@keyframes sun-pulse {
-  0%,100% { filter: drop-shadow(0 0 0 rgba(255,220,120,.0)); }
-  50%     { filter: drop-shadow(0 0 14px rgba(255,220,120,.55)); }
-}
-.animate-sun {
-  animation:
-    sun-spinbob-grand 16s linear infinite,
-    sun-pulse          5s ease-in-out infinite;
-  will-change: transform, filter;
-}
-/* (you already scale/glow the wrapper on hover; that still works) */
-
-/* ---------- Motion safety ---------- */
-@media (prefers-reduced-motion: reduce) {
-  .animate-sun,
-  .butterfly-img,
-  .flower-anim { animation: none !important; filter: none !important; }
-}
-</style>

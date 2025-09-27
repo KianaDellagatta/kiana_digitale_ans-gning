@@ -7,13 +7,13 @@ const { title } = Astro.props;
 <html lang="da">
 	<head>
 		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.png" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{Astro.props.title}</title>
 		
 	</head>
-	<body class="h-screen bg-gradient-to-b from-[#1060A7] via-[#3C96E5] to-[#82C4FF] bg-fixed bg-cover bg-no-repeat">
+	<body class="h-screen bg-gradient-to-b from-[rgb(9,92,165)] via-[#3593e6] to-[#69b8fc] bg-fixed bg-cover bg-no-repeat">
 		<header>
 		  <Header />
 		</header>
@@ -22,11 +22,11 @@ const { title } = Astro.props;
 		  <slot />
 		</main>
 	  
-		<footer>
+		<footer id="contact">
 		  <Footer
 			email="kianadellagatta@icloud.com"
 			phone="+45 29 11 03 53"
-			cvUrl="/kiana-cv.pdf"
+			cvUrl="/KianaDellaGatta-cv.pdf"
 		  />
 		</footer>
 	  </body>

@@ -1,0 +1,66 @@
+---
+// src/components/LangToggle.astro
+import { translations } from "../i18n";
+---
+
+<button
+  data-lang-toggle
+  class="inline-flex items-center gap-2 border-2 border-[var(--color-primary)] rounded-full px-3 py-1 text-[var(--color-primary)] hover:[filter:drop-shadow(0_0_10px_var(--color-primary))] transition"
+  aria-label="Toggle language"
+>
+  <span data-lang-toggle-label>Dansk</span>
+</button>
+
+<script is:inline define:vars={{ translations }}>
+  const LS_KEY = "lang";
+
+  function getLang() {
+    const saved = localStorage.getItem(LS_KEY);
+    return saved === "da" ? "da" : "en";
+  }
+
+  function setLang(lang) {
+    localStorage.setItem(LS_KEY, lang);
+    document.documentElement.setAttribute("lang", lang);
+    document.querySelectorAll("[data-lang-toggle-label]").forEach((n) => {
+      n.textContent = lang === "en" ? "Dansk" : "English";
+    });
+  }
+
+  function applyTranslations(lang) {
+    document.querySelectorAll("[data-i18n]").forEach((n) => {
+      const key = n.getAttribute("data-i18n");
+      if (!key) return;
+      const entry = translations[key];
+      if (!entry) return;
+      if (n.hasAttribute("data-i18n-html")) n.innerHTML = entry[lang];
+      else n.textContent = entry[lang];
+    });
+  }
+
+  function init() {
+    let lang = getLang();
+    setLang(lang);
+    applyTranslations(lang);
+
+    document.querySelectorAll("[data-lang-toggle]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        lang = lang === "en" ? "da" : "en";
+        setLang(lang);
+        applyTranslations(lang);
+      });
+    });
+
+    window.addEventListener("pageshow", () => {
+      const l = getLang();
+      setLang(l);
+      applyTranslations(l);
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
+</script>
