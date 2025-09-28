@@ -4,7 +4,7 @@ export type Lang = "en" | "da";
 export const translations: Record<string, { en: string; da: string }> = {
   // Header navigation
   "nav.about": { en: "About", da: "Om" },
-  "nav.skills": { en: "Skills", da: "Skills" },
+  "nav.skills": { en: "Skills", da: "Færdigheder" },
   "nav.contact": { en: "Contact", da: "Kontakt" },
 
   // Index page content
