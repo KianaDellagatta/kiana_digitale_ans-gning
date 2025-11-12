@@ -117,6 +117,8 @@ import LangToggle from "../components/LangToggle.astro";
         <img src="/ccc_logo.svg" alt="CCC Logo" class="w-full max-w-[220px] object-contain" />
         <img src="/thehungrypassport_logo.svg" alt="The Hungry Passport Logo" class="w-full max-w-[220px] object-contain" />
         <img src="/maksofilm_logo.svg" alt="Maksofilm Logo" class="w-full max-w-[220px] object-contain" />
+        <img src="/KSlogo.svg" alt="Maksofilm Logo" class="w-full max-w-[220px] object-contain" />
+        <img src="/hdklogo.svg" alt="Maksofilm Logo" class="w-full max-w-[220px] object-contain" />
       </div>
     </section>
 
@@ -135,5 +137,31 @@ import LangToggle from "../components/LangToggle.astro";
         <img src="/instant_characters.svg" alt="Instant Characters" class="w-full max-w-[520px] object-contain" />
       </div>
     </section>
+    <section class="relative mt-18 border-3 border-[var(--color-primary)] rounded-xl p-6 lg:p-8">
+      <img src="/flower2.svg" alt="" class="hidden lg:block absolute -top-6 -right-6 w-20 flower-anim" aria-hidden="true" />
+      <div class="hidden lg:block absolute top-1/2 -left-10 w-18 butterfly-flutter" style="--rot:-4deg" aria-hidden="true">
+        <img src="/butterfly4.svg" alt="" class="w-full butterfly-img" />
+      </div>
+
+      <Heading htmlheading="h3" font="header" stylingclasses="text-[var(--color-primary)] mb-4">
+        <span data-i18n="SoMe.h3">SoMe</span>
+      </Heading>
+      <div class="grid grid-cols-2 justify-items-center gap-6 lg:grid-cols-4">
+        <img src="/some1.png" alt="Kulturnat Logo" class="w-full max-w-[220px] object-contain rounded-lg" />
+        <img src="/some2.png" alt="CCC Logo" class="w-full max-w-[220px] object-contain rounded-lg" />
+        <img src="/some3.png" alt="The Hungry Passport Logo" class="w-full max-w-[220px] object-contain rounded-lg" />
+        
+        <video 
+          src="/some4.mp4" 
+          class="w-full max-w-[220px] object-contain rounded-lg" 
+          autoplay 
+          muted 
+          loop 
+          playsinline>
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </section>
+
   </section>
 </MainLayout>
