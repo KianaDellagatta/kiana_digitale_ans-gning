@@ -25,6 +25,11 @@ export const translations: Record<string, { en: string; da: string }> = {
   // Skills heading intentionally NOT translated
 
   "past.h2": { en: "Past Projects", da: "Tidligere projekter" },
+  "Printwork.h3": { en: "Print Work", da: "Trykte medier" },
   "logofolio.h3": { en: "Logofolio", da: "Logofolio" },
   "characters.h3": { en: "Character Design", da: "Karakterdesign" },
+  "app.h3": {
+    en: "Children's Streaming Platform",
+    da: "Streamingplatform til børn",
+  },
 };
