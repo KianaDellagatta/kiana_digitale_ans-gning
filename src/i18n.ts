@@ -10,8 +10,8 @@ export const translations: Record<string, { en: string; da: string }> = {
   // Index page content
   "about.h2": { en: "About", da: "Om" },
   "about.p": {
-    en: "My name is Kiana DellaGatta, I am a Multimedia Design student in my 3rd semester, focusing on digital design, especially UX/UI and graphic design. I am passionate about creating creative solutions that speak to the target audience. During my internship, I want to gain insight into professional design processes and teamwork. As a colleague, I am collaborative, communicative, and contribute with creativity.",
-    da: "Mit navn er Kiana DellaGatta. Jeg er multimediedesign-studerende på 3. semester med fokus på digitalt design – især UX/UI og grafisk design. Jeg brænder for at skabe kreative løsninger, der taler til målgruppen. Under min praktik vil jeg gerne få indsigt i professionelle designprocesser og teamwork. Som kollega er jeg samarbejdende, kommunikativ og bidrager med kreativitet.",
+    en: "Hi, I'm Kiana, a Multimedia Designer passionate about visual storytelling, branding, packaging, and digital design. I love creating designs that not only look beautiful but also solve problems and connect with people. My work spans graphic design, UI/UX, branding, and print, and I’m always excited to learn new skills, explore new ideas, and bring concepts to life through thoughtful design.",
+    da: "Hej, jeg hedder Kiana og er multimediedesigner med en passion for visuel historiefortælling, branding, emballagedesign og digitalt design. Jeg elsker at skabe design, der ikke kun ser godt ud, men også løser problemer og skaber en forbindelse til brugeren. Mit arbejde spænder over grafisk design, UI/UX, branding og trykte medier, og jeg motiveres af hele tiden at lære nyt, udforske nye idéer og omsætte koncepter til gennemtænkte designløsninger.",
   },
 
   "languages.h3": { en: "Languages", da: "Sprog" },
